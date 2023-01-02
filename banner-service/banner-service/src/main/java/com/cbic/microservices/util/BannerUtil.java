@@ -38,7 +38,7 @@ public class BannerUtil {
 		banner.getCbicDocMst().setDocumentDt(banner.getCreatedDate());
 		banner.getCbicDocMst().setExpiryDt(banner.getEndDate());
 		banner.getCbicDocMst().setRequestDetails(banner.getRequestDetails());
-		banner.getCbicDocMst().setOrderId(banner.getRequestDetails().getRequestNo());
+		banner.getCbicDocMst().setOrderId(banner.getRequestDetails());
 		banner.getCbicDocMst().setCreatedBy(59380l);
 		
 		// setting cbicContentMst data

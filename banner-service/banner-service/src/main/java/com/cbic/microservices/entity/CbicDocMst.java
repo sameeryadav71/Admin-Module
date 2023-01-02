@@ -18,7 +18,6 @@ public class CbicDocMst {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String isActive;
-	private Integer orderId;
 	private Date createdDt;
 	private Date updatedDt;
 	private Long createdBy;
@@ -53,6 +52,10 @@ public class CbicDocMst {
 	@JoinColumn(name = "requestId")
 	private RequestDetails requestDetails;
 	
+	@OneToOne
+	@JoinColumn(name = "orderId")
+	private RequestDetails orderId;
+	
 	public Long getId() {
 		return id;
 	}
@@ -64,12 +67,6 @@ public class CbicDocMst {
 	}
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
-	}
-	public Integer getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
 	}
 	public Date getCreatedDt() {
 		return createdDt;
@@ -251,17 +248,23 @@ public class CbicDocMst {
 	public void setRequestDetails(RequestDetails requestDetails) {
 		this.requestDetails = requestDetails;
 	}
+	public RequestDetails getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(RequestDetails orderId) {
+		this.orderId = orderId;
+	}
 	@Override
 	public String toString() {
-		return "CbicDocMst [id=" + id + ", isActive=" + isActive + ", orderId=" + orderId + ", createdDt=" + createdDt
-				+ ", updatedDt=" + updatedDt + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", versionNo="
-				+ versionNo + ", isPublished=" + isPublished + ", publishDt=" + publishDt + ", isArchived=" + isArchived
+		return "CbicDocMst [id=" + id + ", isActive=" + isActive + ", createdDt=" + createdDt + ", updatedDt="
+				+ updatedDt + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", versionNo=" + versionNo
+				+ ", isPublished=" + isPublished + ", publishDt=" + publishDt + ", isArchived=" + isArchived
 				+ ", archiveDt=" + archiveDt + ", parentId=" + parentId + ", taxId=" + taxId + ", locationId="
 				+ locationId + ", docType=" + docType + ", docNo=" + docNo + ", docTitleEn=" + docTitleEn
 				+ ", docTitleHi=" + docTitleHi + ", fileType=" + fileType + ", fileNameEn=" + fileNameEn
 				+ ", fileNameHi=" + fileNameHi + ", filePathEn=" + filePathEn + ", filePathHi=" + filePathHi
 				+ ", image=" + image + ", documentDt=" + documentDt + ", ref_dt_1=" + ref_dt_1 + ", ref_dt_2="
 				+ ref_dt_2 + ", expiryDt=" + expiryDt + ", year=" + year + ", contentTypeId=" + contentTypeId
-				+ ", contentId=" + contentId + ", requestDetails=" + requestDetails + "]";
+				+ ", contentId=" + contentId + ", requestDetails=" + requestDetails + ", orderId=" + orderId + "]";
 	}
 }
