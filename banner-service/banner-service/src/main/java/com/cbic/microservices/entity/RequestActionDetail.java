@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class RequestActionDetail {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer actionId;
 	private String roleId;
 	private Integer wfLevel;

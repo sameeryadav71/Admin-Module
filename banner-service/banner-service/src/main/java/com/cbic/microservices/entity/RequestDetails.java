@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class RequestDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer requestNo;
 	private String requestType;
 	private String description;

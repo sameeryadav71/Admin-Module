@@ -15,10 +15,10 @@ import javax.persistence.Table;
 public class CbicDocMst {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String isActive;
-	private Long orderId;
+	private Integer orderId;
 	private Date createdDt;
 	private Date updatedDt;
 	private Long createdBy;
@@ -65,10 +65,10 @@ public class CbicDocMst {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
-	public Long getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(Long orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	public Date getCreatedDt() {

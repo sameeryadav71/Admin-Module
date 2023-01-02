@@ -11,6 +11,7 @@ public class BannerUtil {
 	private static final Integer WORKFLOW_LEVEL = 0;
 	private static final Long VERSION_NO = 1L;
 	private static final String SEPARATOR = "/";
+	private static final String ADMIN = "ADMIN";
 
 	public static Banner getBannerDeatils(Banner banner) {
 
@@ -21,6 +22,7 @@ public class BannerUtil {
 		banner.getRequestDetails().setWorkflowLevel(WORKFLOW_LEVEL);
 		banner.getRequestDetails().setRequestedOn(banner.getCreatedDate());
 		banner.getRequestDetails().setRequestStatus(PENDING);
+		banner.getRequestDetails().setRequestedBy(ADMIN);
 
 		// setting cbicDocMst data
 		banner.getCbicDocMst().setCreatedDt(banner.getCreatedDate());
@@ -36,13 +38,17 @@ public class BannerUtil {
 		banner.getCbicDocMst().setDocumentDt(banner.getCreatedDate());
 		banner.getCbicDocMst().setExpiryDt(banner.getEndDate());
 		banner.getCbicDocMst().setRequestDetails(banner.getRequestDetails());
+		banner.getCbicDocMst().setOrderId(banner.getRequestDetails().getRequestNo());
+		banner.getCbicDocMst().setCreatedBy(59380l);
 		
 		// setting cbicContentMst data
 		banner.getCbicContentMst().setIsActive(Y);
 		banner.getCbicContentMst().setOrderId(banner.getPriority());
 		banner.getCbicContentMst().setCreatedDt(banner.getCreatedDate());
+		banner.getCbicContentMst().setCreatedBy(59380l);
 		banner.getCbicContentMst().setVersionNo(VERSION_NO);
 		banner.getCbicContentMst().setIsPublished(Y);
+		banner.getCbicContentMst().setYear(2023l);
 		banner.getCbicContentMst().setTitleEn(banner.getBannerDesription());
 		banner.getCbicContentMst().setInfoEn(banner.getBannerDesription());
 		banner.getCbicContentMst().setPath(banner.getImagePath());
@@ -57,6 +63,7 @@ public class BannerUtil {
 		banner.getRequestActionDetail().setComment(banner.getBannerDesription());
 		banner.getRequestActionDetail().setCreatedOn(banner.getCreatedDate());
 		banner.getRequestActionDetail().setRequestDetails(banner.getRequestDetails());
+		banner.getRequestActionDetail().setCreatedBy(ADMIN);
 
 		return banner;
 	}

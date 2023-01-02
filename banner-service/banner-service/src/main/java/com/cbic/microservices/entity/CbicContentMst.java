@@ -16,12 +16,13 @@ import javax.persistence.Table;
 public class CbicContentMst {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String isActive;
 	private Integer orderId;
 	private Date createdDt;
 	private Date updatedDt;
+	private Long createdBy;
 	private Long updateBy;
 	private Long versionNo;
 	private String isPublished;
@@ -210,16 +211,22 @@ public class CbicContentMst {
 	public void setRequestDetails(RequestDetails requestDetails) {
 		this.requestDetails = requestDetails;
 	}
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
 	@Override
 	public String toString() {
 		return "CbicContentMst [id=" + id + ", isActive=" + isActive + ", orderId=" + orderId + ", createdDt="
-				+ createdDt + ", updatedDt=" + updatedDt + ", updateBy=" + updateBy + ", versionNo=" + versionNo
-				+ ", isPublished=" + isPublished + ", publishDt=" + publishDt + ", isArchived=" + isArchived
-				+ ", archiveDt=" + archiveDt + ", parentId=" + parentId + ", taxId=" + taxId + ", locationId="
-				+ locationId + ", titleEn=" + titleEn + ", titleHi=" + titleHi + ", infoEn=" + infoEn + ", infoHi="
-				+ infoHi + ", refNumber=" + refNumber + ", path=" + path + ", contentDt=" + contentDt + ", ref_dt_1="
-				+ ref_dt_1 + ", ref_dt_2=" + ref_dt_2 + ", expiryDt=" + expiryDt + ", year=" + year + ", contentTypeId="
-				+ contentTypeId + ", requestDetails=" + requestDetails + "]";
+				+ createdDt + ", updatedDt=" + updatedDt + ", createdBy=" + createdBy + ", updateBy=" + updateBy
+				+ ", versionNo=" + versionNo + ", isPublished=" + isPublished + ", publishDt=" + publishDt
+				+ ", isArchived=" + isArchived + ", archiveDt=" + archiveDt + ", parentId=" + parentId + ", taxId="
+				+ taxId + ", locationId=" + locationId + ", titleEn=" + titleEn + ", titleHi=" + titleHi + ", infoEn="
+				+ infoEn + ", infoHi=" + infoHi + ", refNumber=" + refNumber + ", path=" + path + ", contentDt="
+				+ contentDt + ", ref_dt_1=" + ref_dt_1 + ", ref_dt_2=" + ref_dt_2 + ", expiryDt=" + expiryDt + ", year="
+				+ year + ", contentTypeId=" + contentTypeId + ", requestDetails=" + requestDetails + "]";
 	}
 
 }

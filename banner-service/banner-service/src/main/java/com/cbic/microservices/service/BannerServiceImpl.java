@@ -109,7 +109,8 @@ public class BannerServiceImpl implements BannerService {
 				banner = BannerUtil.getBannerDeatils(banner);
 				requestDetails = requestDetailsService.saveRequestDetails(banner.getRequestDetails());
 				//set requestDetails object in banner object so the we can get requestId for other entities
-				banner.setRequestDetails(requestDetails);				
+				banner.setRequestDetails(requestDetails);
+				banner = BannerUtil.getBannerDeatils(banner);
 				requestActionDetail = requestActionDetailService.saveRequestActionDetail(banner.getRequestActionDetail());
 				cbicContentMst = cbicContentMstService.saveCbicContentMst(banner.getCbicContentMst());
 				cbicDocMst = cbicDocMstService.saveCbicDocMst(banner.getCbicDocMst());
