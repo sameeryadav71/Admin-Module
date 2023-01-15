@@ -1,7 +1,10 @@
 package com.cbic.microservices.util;
 
 import com.cbic.microservices.dto.Banner;
+import com.cbic.microservices.dto.ValidatorView;
+import com.cbic.microservices.dto.Workflow;
 import com.cbic.microservices.entity.CbicContentMst;
+import com.cbic.microservices.entity.RequestDetails;
 
 public class BannerUtil {
 
@@ -12,6 +15,8 @@ public class BannerUtil {
 	private static final Long VERSION_NO = 1L;
 	private static final String SEPARATOR = "/";
 	private static final String ADMIN = "ADMIN";
+	private static final String CBIC = "CBIC";
+
 
 	public static Banner getBannerDeatils(Banner banner) {
 
@@ -64,7 +69,7 @@ public class BannerUtil {
 		banner.getRequestActionDetail().setCreatedOn(banner.getCreatedDate());
 		banner.getRequestActionDetail().setRequestDetails(banner.getRequestDetails());
 		banner.getRequestActionDetail().setCreatedBy(ADMIN);
-
+		
 		return banner;
 	}
 
@@ -87,6 +92,30 @@ public class BannerUtil {
 			return filePath.substring(filePath.indexOf(SEPARATOR) + SEPARATOR.length());
 		}
 		return null;
+	}
+	
+	public static ValidatorView saveValidatorView(CbicContentMst cbicContentMst) {
+		ValidatorView validatorView = new ValidatorView();
+		validatorView.setDesription(cbicContentMst.getTitleEn());
+		validatorView.setEndDate(cbicContentMst.getExpiryDt());
+		validatorView.setStartDate(cbicContentMst.getCreatedDt());
+		validatorView.setFile(cbicContentMst.getPath());
+		validatorView.setPriority(cbicContentMst.getOrderId());
+		validatorView.setRequestId(cbicContentMst.getRequestDetails().getRequestNo());
+		return validatorView;
+	}
+	
+	public static Workflow getWorkflow(RequestDetails requestDetails) {
+		Workflow workflow = new Workflow();
+		workflow.setApplicationName(CBIC);
+		workflow.setRequestNo(requestDetails.getRequestNo());
+		workflow.setRequestType(requestDetails.getRequestType());
+		workflow.setContentType(requestDetails.getRequestType());
+		workflow.setStatus(requestDetails.getRequestStatus());
+		workflow.setInitiatedOn(requestDetails.getRequestedOn());
+		workflow.setInitiatedBy(requestDetails.getRequestedBy());
+		workflow.setUpdatedOn(requestDetails.getUpdatedOn());
+		return workflow;
 	}
 
 }
